@@ -2,12 +2,11 @@ package com.example.employee_management.repositoryImpl;
 
 import com.example.employee_management.dto.DepartmentDto;
 import com.example.employee_management.dto.EmployeeDto;
-import com.example.employee_management.model.DepartmentModel;
-import com.example.employee_management.model.DepartmentRowMapper;
-import com.example.employee_management.model.EmployeeModel;
-import com.example.employee_management.model.EmployeeRowMapper;
+import com.example.employee_management.dto.ProjectDto;
+import com.example.employee_management.model.*;
 import com.example.employee_management.repository.DepartmentRepository;
 import com.example.employee_management.repository.EmployeeRepository;
+import com.example.employee_management.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -16,37 +15,37 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class DepartmentRepositoryImpl implements DepartmentRepository {
+public class ProjectRepositoryImpl implements ProjectRepository {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public void save(DepartmentDto department) {
+    public void save(ProjectDto project) {
         String sql="INSERT INTO departments (name,description) VALUES (?,?)";
-        jdbcTemplate.update(sql,department.getName(),department.getDescription());
+        jdbcTemplate.update(sql,project.getName(),project.getDescription());
     }
 
 
     @Override
-    public Optional<DepartmentModel> findById(Long id) {
+    public Optional<ProjectModel> findById(Long id) {
         String sql="SELECT * FROM departments WHERE id = ?";
-        return jdbcTemplate.query(sql,new DepartmentRowMapper(),id).stream().findFirst();
+        return jdbcTemplate.query(sql,new ProjectRowMapper(),id).stream().findFirst();
 //        return jdbcTemplate.query(sql, new Object[]{id}, new DepartmentRowMapper()).stream().findFirst();
     }
 
     @Override
-    public List<DepartmentModel> findAll() {
+    public List<ProjectModel> findAll() {
         String sql = "SELECT * FROM employees";
-        return jdbcTemplate.query(sql,new DepartmentRowMapper());
+        return jdbcTemplate.query(sql,new ProjectRowMapper());
     }
 
     @Override
-    public void update(Long id,DepartmentDto department) {
+    public void update(Long id,ProjectDto project) {
         String sql ="UPDATE employees SET name = ?,description = ? WHERE id = ?";
         jdbcTemplate.update(sql,
-                department.getName(),
-                department.getDescription(),
+                project.getName(),
+                project.getDescription(),
                 id);
     }
 

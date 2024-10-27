@@ -1,17 +1,19 @@
 package com.example.employee_management.service;
 
+import com.example.employee_management.dto.DepartmentDto;
 import com.example.employee_management.dto.EmployeeDto;
+import com.example.employee_management.model.DepartmentModel;
 import com.example.employee_management.model.EmployeeModel;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface EmployeeService {
+public interface DepartmentService {
 
-    void saveEmployee(EmployeeDto employee);
-    Optional<EmployeeModel> getEmployeeById(Long id);
-    List<EmployeeModel> getAllEmployees();
-    void updateEmployee(Long id,EmployeeDto employee);
-    void deleteEmployeeById(Long id);
+    void saveDepartment(DepartmentDto department);
+    Optional<DepartmentModel> getDepartmentById(Long id);
+    List<DepartmentModel> getAllDepartments();
+    void updateDepartment(Long id,DepartmentDto department);
+    void deleteDepartmentById(Long id);
 
 }

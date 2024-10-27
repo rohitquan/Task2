@@ -7,12 +7,10 @@ import lombok.Setter;
 @Data
 @Getter
 @Setter
-public class EmployeeModel {
+public class DepartmentModel {
 
     private Long id;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private Long departmentId;
+    private String name;
+    private String description;
 
 }

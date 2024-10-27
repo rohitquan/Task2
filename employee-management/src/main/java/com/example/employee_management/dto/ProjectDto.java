@@ -7,7 +7,7 @@ import lombok.Setter;
 @Data
 @Getter
 @Setter
-public class DepartmentDto {
+public class ProjectDto {
     private String  name;
     private String description;
 }

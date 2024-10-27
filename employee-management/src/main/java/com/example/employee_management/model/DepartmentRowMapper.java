@@ -5,14 +5,13 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class EmployeeRowMapper implements RowMapper<EmployeeModel> {
+public class DepartmentRowMapper implements RowMapper<DepartmentModel> {
     @Override
-    public EmployeeModel mapRow(ResultSet rs, int rowNum) throws SQLException {
-        EmployeeModel employee =new EmployeeModel();
-        employee.setId(rs.getLong("id"));
-        employee.setFirstName(rs.getString("first_name"));
-        employee.setLastName(rs.getString("email"));
-        employee.setDepartmentId(rs.getLong("department_id"));
-        return employee;
+    public DepartmentModel mapRow(ResultSet rs, int rowNum) throws SQLException {
+        DepartmentModel department =new DepartmentModel();
+        department.setId(rs.getLong("id"));
+        department.setName(rs.getString("name"));
+        department.setDescription(rs.getString("description"));
+        return department;
     }
 }
