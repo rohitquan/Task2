@@ -39,4 +39,19 @@ public class EmployeeController {
     public void deleteEmployee(@PathVariable Long id ){
         employeeService.deleteEmployeeById(id);
     }
+
+    @GetMapping("/paginated-sorted")
+    public List<EmployeeModel> getpaginatedAndSortedEmployees(
+            @RequestParam(defaultValue = "1") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "first_name") String sortBy,
+            @RequestParam(defaultValue = "asc") String sortDir){
+     return employeeService.getPaginatedAndSortedEmployees(page, size, sortBy, sortDir);
+    }
+
+    @GetMapping("/by-department/{departmentId}")
+    public  List<EmployeeModel> getEmployeesByDepartment(@PathVariable Long departmentId) {
+        return  employeeService.getEmployeesByDepartmentId(departmentId);
+    }
+
 }

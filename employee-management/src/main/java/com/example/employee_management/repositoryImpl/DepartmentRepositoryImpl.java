@@ -23,27 +23,27 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
 
     @Override
     public void save(DepartmentDto department) {
-        String sql="INSERT INTO departments (name,description) VALUES (?,?)";
+        String sql="INSERT INTO department_data (name,description) VALUES (?,?)";
         jdbcTemplate.update(sql,department.getName(),department.getDescription());
     }
 
 
     @Override
     public Optional<DepartmentModel> findById(Long id) {
-        String sql="SELECT * FROM departments WHERE id = ?";
+        String sql="SELECT * FROM department_data WHERE id = ?";
         return jdbcTemplate.query(sql,new DepartmentRowMapper(),id).stream().findFirst();
 //        return jdbcTemplate.query(sql, new Object[]{id}, new DepartmentRowMapper()).stream().findFirst();
     }
 
     @Override
     public List<DepartmentModel> findAll() {
-        String sql = "SELECT * FROM employees";
+        String sql = "SELECT * FROM department_data";
         return jdbcTemplate.query(sql,new DepartmentRowMapper());
     }
 
     @Override
     public void update(Long id,DepartmentDto department) {
-        String sql ="UPDATE employees SET name = ?,description = ? WHERE id = ?";
+        String sql ="UPDATE department_data SET name = ?,description = ? WHERE id = ?";
         jdbcTemplate.update(sql,
                 department.getName(),
                 department.getDescription(),
@@ -52,7 +52,7 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
 
     @Override
     public void deleteById(Long id) {
-        String sql = "DELETE FROM employees WHERE id = ?";
+        String sql = "DELETE FROM department_data WHERE id = ?";
     jdbcTemplate.update(sql,id);
     }
 }

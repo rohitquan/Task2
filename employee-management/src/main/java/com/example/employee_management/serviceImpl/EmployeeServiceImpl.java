@@ -40,4 +40,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void deleteEmployeeById(Long id) {
         employeeRepository.deleteById(id);
     }
+
+    @Override
+    public List<EmployeeModel> getPaginatedAndSortedEmployees(int page, int size, String sortBy, String sortDir) {
+        return employeeRepository.findPaginatedAndSortedEmployees(page, size, sortBy, sortDir);
+    }
+
+    @Override
+    public List<EmployeeModel> getEmployeesByDepartmentId(Long departmentId) {
+        return employeeRepository.findEmployeesByDepartmentId(departmentId);
+    }
 }

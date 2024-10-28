@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface ProjectService {
 
     void saveProject(ProjectDto project);
-    Optional<DepartmentModel> getProjectById(Long id);
+    Optional<ProjectModel> getProjectById(Long id);
     List<ProjectModel> getAllProjects();
     void updateProject(Long id,ProjectDto project);
     void deleteProjectById(Long id);

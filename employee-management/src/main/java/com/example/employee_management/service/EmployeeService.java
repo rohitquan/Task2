@@ -13,5 +13,6 @@ public interface EmployeeService {
     List<EmployeeModel> getAllEmployees();
     void updateEmployee(Long id,EmployeeDto employee);
     void deleteEmployeeById(Long id);
-
+    List<EmployeeModel> getPaginatedAndSortedEmployees(int page,int size,String sortBy, String sortDir);
+    List<EmployeeModel> getEmployeesByDepartmentId(Long departmentId);
 }

@@ -12,4 +12,7 @@ public interface EmployeeRepository {
     List<EmployeeModel>  findAll();
     void update(Long id ,EmployeeDto employeeDto);
     void deleteById(Long id);
+
+    List<EmployeeModel> findPaginatedAndSortedEmployees(int page,int size,String sortBy,String sortDir);
+    List<EmployeeModel> findEmployeesByDepartmentId(Long departmentId);
 }

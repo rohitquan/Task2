@@ -22,27 +22,26 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
     @Override
     public void save(ProjectDto project) {
-        String sql="INSERT INTO departments (name,description) VALUES (?,?)";
+        String sql="INSERT INTO project_data (name,description) VALUES (?,?)";
         jdbcTemplate.update(sql,project.getName(),project.getDescription());
     }
 
-
     @Override
     public Optional<ProjectModel> findById(Long id) {
-        String sql="SELECT * FROM departments WHERE id = ?";
+        String sql="SELECT * FROM project_data WHERE id = ?";
         return jdbcTemplate.query(sql,new ProjectRowMapper(),id).stream().findFirst();
 //        return jdbcTemplate.query(sql, new Object[]{id}, new DepartmentRowMapper()).stream().findFirst();
     }
 
     @Override
     public List<ProjectModel> findAll() {
-        String sql = "SELECT * FROM employees";
+        String sql = "SELECT * FROM project_data";
         return jdbcTemplate.query(sql,new ProjectRowMapper());
     }
 
     @Override
     public void update(Long id,ProjectDto project) {
-        String sql ="UPDATE employees SET name = ?,description = ? WHERE id = ?";
+        String sql ="UPDATE project_data SET name = ?,description = ? WHERE id = ?";
         jdbcTemplate.update(sql,
                 project.getName(),
                 project.getDescription(),
@@ -51,7 +50,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
     @Override
     public void deleteById(Long id) {
-        String sql = "DELETE FROM employees WHERE id = ?";
+        String sql = "DELETE FROM project_data WHERE id = ?";
     jdbcTemplate.update(sql,id);
     }
 }
